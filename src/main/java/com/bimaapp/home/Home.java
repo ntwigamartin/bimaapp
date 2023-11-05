@@ -8,13 +8,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/home")
 public class Home extends HttpServlet{
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServerException, IOException{
+
+        HttpSession session = req.getSession();
         PrintWriter writer = resp.getWriter();
-        writer.print("<!DOCTYPE html>\n" + //
+
+        if (session.getAttribute("LoggedInId") != null) {
+                writer.print("<!DOCTYPE html>\n" + //
                 "<html>\n" + //
                 "<head>\n" + //
                 "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" + //
@@ -68,11 +73,18 @@ public class Home extends HttpServlet{
                 "</div>\n" + //
                 "\n" + //
                 "<div class=\"main\">\n" + //
+                "<p>Welcome</p>\n" + //
+                session.getAttribute("user") + "\n" + session.getAttribute("LoggedInId") + //
                 "</div>\n" + //
                 "     \n" + //
                 "</body>\n" + //
                 "</html> \n" + //
                 "");
+        }else {
+            resp.sendRedirect("./");
+        }
+        
+
     }
    
 }
