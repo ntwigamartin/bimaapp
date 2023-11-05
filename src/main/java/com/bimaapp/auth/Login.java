@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,6 +45,9 @@ public class Login extends HttpServlet{
                     HttpSession session = req.getSession(true);
                     session.setAttribute("user", username);
                     session.setAttribute("LoggedInId", LocalDateTime.now());
+
+                    Cookie cookie = new Cookie("user_id", UUID.randomUUID().toString());
+                    resp.addCookie(cookie);
 
                     resp.sendRedirect("./home");
                 }

@@ -12,8 +12,6 @@ public class DefaultUserRegister implements ServletContextListener{
     
     public void contextInitialized(ServletContextEvent sce) {
 
-        System.out.println("Application initialized");
-
         Database db = Database.getDbInstance();
         db.getUsers().add(new User("admin", "123"));
         db.getUsers().add(new User("John", "john"));
