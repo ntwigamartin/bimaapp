@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bimaapp.database.Database;
+import com.bimaapp.model.User;
+
 @WebServlet("/register")
 public class Register extends HttpServlet{
     
@@ -29,7 +32,7 @@ public class Register extends HttpServlet{
                 "\n" + //
                 "  <div class=\"grid\">\n" + //
                 "\n" + //
-                "    <form action=\"./login\" method=\"POST\" class=\"form login\">\n" + //
+                "    <form action=\"./register\" method=\"POST\" class=\"form login\">\n" + //
                 "\n" + //
                 "      <div class=\"form__field\">\n" + //
                 "        <label for=\"login__username\"><svg class=\"icon\"><use xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"#user\"></use></svg><span class=\"hidden\">Username</span></label>\n" + //
@@ -63,5 +66,23 @@ public class Register extends HttpServlet{
                 "</body>\n" + //
                 "</html>\n" + //
                 "");
+    }
+
+
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServerException, IOException {
+        
+        Database db = Database.getDbInstance();
+        PrintWriter writer = resp.getWriter();
+
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        String confirmPassword = req.getParameter("confirmpassword");
+
+        if (password.equals(confirmPassword)) {
+            db.getUsers().add(new User(username, confirmPassword));
+            resp.sendRedirect("./");
+        }else {
+            writer.print("<html><body>passwords do not match.<a href=\"./register\">Try again</a></body></html>");
+        }
     }
 }
