@@ -64,6 +64,7 @@ public class Home extends HttpServlet{
                 "  <a href=\"#clients\"><i class=\"fa fa-fw fa-user\"></i> Clients</a>\n" + //
                 "  <a href=\"#underwriting\"><i class=\"fa fa-fw fa-wrench\"></i> Policy</a>\n" + //
                 "  <a href=\"#claims\"><i class=\"fa fa-fw fa-wrench\"></i> Claims</a>\n" + //
+                "  <a href=\"./logout\"><i class=\"fa fa-fw fa-wrench\"></i> Logout</a>\n" + //
                 "</div>\n" + //
                 "\n" + //
                 "<div class=\"main\">\n" + //
