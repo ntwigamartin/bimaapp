@@ -35,7 +35,7 @@ public class Login extends HttpServlet{
 
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-
+        
         if (username != null && password != null && db.getUsers() != null) {
             for (User user : db.getUsers()) {
                 if (username.equals(user.getUserName()) && password.equals(user.getPassword())) {

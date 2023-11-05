@@ -3,13 +3,10 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  <!-- <servlet>
-    <servlet-name>martin</servlet-name>
-    <servlet-class>com.bimaapp.home.Hello</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>martin</servlet-name>
-    <url-pattern>/hello</url-pattern>
-  </servlet-mapping> -->
+  <display-name>Bima Application</display-name>
+  <context-param>
+    <param-name>Welcome</param-name>
+    <param-value>Bima App</param-value>
+  </context-param>
+
 </web-app>

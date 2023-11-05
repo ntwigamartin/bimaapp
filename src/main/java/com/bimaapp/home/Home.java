@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.rmi.ServerException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,8 @@ public class Home extends HttpServlet{
 
         HttpSession session = req.getSession();
         PrintWriter writer = resp.getWriter();
+
+        ServletContext ctx = req.getServletContext();
 
         if (session.getAttribute("LoggedInId") != null) {
                 writer.print("<!DOCTYPE html>\n" + //
@@ -74,7 +77,8 @@ public class Home extends HttpServlet{
                 "\n" + //
                 "<div class=\"main\">\n" + //
                 "<p>Welcome</p>\n" + //
-                session.getAttribute("user") + "\n" + session.getAttribute("LoggedInId") + //
+                ctx.getInitParameter("Welcome") + "<br>\n" + "<span>User: </span>\n" +
+                session.getAttribute("user") + "\n" + "<br>\n" + session.getAttribute("LoggedInId") + //
                 "</div>\n" + //
                 "     \n" + //
                 "</body>\n" + //
