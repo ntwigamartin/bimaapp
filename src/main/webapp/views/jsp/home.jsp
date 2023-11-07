@@ -7,7 +7,7 @@
 <body>
 
 <div class="sidebar">
-  <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
+  <a href="./home"><i class="fa fa-fw fa-home"></i> Home</a>
   <a href="./clients"><i class="fa fa-fw fa-user"></i> Clients</a>
   <a href="#policy"><i class="fa fa-fw fa-wrench"></i> Policy</a>
   <a href="#claims"><i class="fa fa-fw fa-wrench"></i> Claims</a>
@@ -15,9 +15,7 @@
 </div>
 
 <div class="main">
-  <%= request.getHeader("User-Agent")%>
-  <br>
-  <%= request.getLocale()%>
+  <img src="images/download.png" />
 </div>
      
 </body>
