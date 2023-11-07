@@ -22,10 +22,17 @@ public class Login extends HttpServlet{
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         HttpSession session = req.getSession();
+        Cookie[] cookies = req.getCookies();
 
-        if (session.getAttribute("LoggedInId") != null) {
-            resp.sendRedirect("./home");
+        for (Cookie cookie : cookies) {
+            if(cookie.getName() != null) {
+                resp.sendRedirect("./home");
+            }
         }
+
+        // if (session.getAttribute("LoggedInId") != null) {
+        //     resp.sendRedirect("./home");
+        // }
 
         resp.sendRedirect("./");
     }
@@ -45,9 +52,11 @@ public class Login extends HttpServlet{
                     HttpSession session = req.getSession(true);
                     session.setAttribute("user", username);
                     session.setAttribute("LoggedInId", LocalDateTime.now());
+                    session.setMaxInactiveInterval(120);
 
                     Cookie cookie = new Cookie("user_id", UUID.randomUUID().toString());
                     resp.addCookie(cookie);
+                    cookie.setMaxAge(120);
 
                     resp.sendRedirect("./home");
                 }
