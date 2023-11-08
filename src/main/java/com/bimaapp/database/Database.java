@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bimaapp.model.Client;
+import com.bimaapp.model.Policy;
 import com.bimaapp.model.User;
 
 public class Database implements Serializable {
     
     private List<User> users = new ArrayList<User>();
     private List<Client> clients = new ArrayList<Client>();
+    private List<Policy> policies = new ArrayList<Policy>();
 
     private static Database dbInstance;
 
@@ -38,4 +40,13 @@ public class Database implements Serializable {
     public void setClients(List<Client> clients) {
         this.clients = clients;
     }
+
+    public List<Policy> getPolicies() {
+        return policies;
+    }
+
+    public void setPolicies(List<Policy> policies) {
+        this.policies = policies;
+    }
+    
 }

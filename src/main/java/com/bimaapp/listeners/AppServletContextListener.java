@@ -1,12 +1,16 @@
 package com.bimaapp.listeners;
 
+import java.time.LocalDate;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import com.bimaapp.database.Database;
+import com.bimaapp.enums.PolicyType;
 import com.bimaapp.enums.UserRole;
 import com.bimaapp.model.Client;
+import com.bimaapp.model.Policy;
 import com.bimaapp.model.User;
 
 @WebListener
@@ -23,5 +27,13 @@ public class AppServletContextListener implements ServletContextListener{
         db.getClients().add(new Client("27835784", "Peter Doe", "0712011322", "peter@gmail.com", "Nakuru"));
         db.getClients().add(new Client("27835785", "Willy Doe", "0712011499", "willy@gmail.com", "Mombasa"));
         db.getClients().add(new Client("27835786", "Jenn Doe", "0712011755", "jenn@gmail.com", "Kisumu"));
+
+
+        db.getPolicies().add(new Policy(LocalDate.now().toString(), LocalDate.now().plusYears(1).toString(), "1001",
+         PolicyType.PRIVATE, db.getClients().get(0)));
+        db.getPolicies().add(new Policy(LocalDate.now().toString(), LocalDate.now().plusYears(1).toString(), "1002",
+         PolicyType.PRIVATE, db.getClients().get(1)));
+        db.getPolicies().add(new Policy(LocalDate.now().toString(), LocalDate.now().plusYears(1).toString(), "1003",
+         PolicyType.PRIVATE, db.getClients().get(2)));
     }
 }
