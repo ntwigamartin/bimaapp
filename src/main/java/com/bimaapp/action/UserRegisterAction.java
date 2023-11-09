@@ -20,8 +20,8 @@ public class UserRegisterAction extends HttpServlet{
     
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/views/jsp/user_register.jsp");
-            dispatcher.forward(req, resp);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/views/jsp/user_register.jsp");
+        dispatcher.forward(req, resp);
     }
 
 

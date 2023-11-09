@@ -9,9 +9,9 @@
 <body>
 <!-- partial:index.partial.html -->
 <body class="align">
-
+  <h2 class="app_name">Bima InsurTech</h2>
   <div class="grid">
-
+    
     <form action="./login" method="POST" class="form login">
 
       <div class="form__field">

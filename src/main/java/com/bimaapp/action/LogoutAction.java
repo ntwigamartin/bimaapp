@@ -1,4 +1,4 @@
-package com.bimaapp.auth;
+package com.bimaapp.action;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/logout")
-public class Logout extends HttpServlet{
+public class LogoutAction extends HttpServlet{
     
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().invalidate();

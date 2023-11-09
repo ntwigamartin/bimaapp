@@ -1,9 +1,8 @@
-package com.bimaapp.auth;
+package com.bimaapp.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -18,23 +17,12 @@ import com.bimaapp.database.Database;
 import com.bimaapp.model.User;
 
 @WebServlet("/login")
-public class Login extends HttpServlet{
+public class LoginAction extends HttpServlet{
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        HttpSession session = req.getSession();
-        Cookie[] cookies = req.getCookies();
 
-        for (Cookie cookie : cookies) {
-            if(cookie.getName() != null) {
-                resp.sendRedirect("./home");
-            }
-        }
-
-        // if (session.getAttribute("LoggedInId") != null) {
-        //     resp.sendRedirect("./home");
-        // }
-
-        resp.sendRedirect("./");
+        resp.sendRedirect("./home");
+        
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException{
@@ -51,12 +39,11 @@ public class Login extends HttpServlet{
 
                     HttpSession session = req.getSession(true);
                     session.setAttribute("user", username);
-                    session.setAttribute("LoggedInId", LocalDateTime.now());
-                    session.setMaxInactiveInterval(120);
+                    session.setAttribute("loggedInId", LocalDateTime.now().toString());
 
                     Cookie cookie = new Cookie("user_id", UUID.randomUUID().toString());
                     resp.addCookie(cookie);
-                    cookie.setMaxAge(120);
+                    // cookie.setMaxAge(3600);
 
                     resp.sendRedirect("./home");
                 }

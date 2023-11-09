@@ -34,22 +34,23 @@
       <th>Start Date</th>
       <th>End Date</th>
       <th>Client Name</th>
-      
+    </tr>
       <%
       List<Policy> policies = Database.getDbInstance().getPolicies();
-      for (Policy policy : policies) {
+        for (Policy policy : policies) {
       %>
       <tr>
+        <a href="./policy">
           <td><%= policy.getNumber() %></td>
           <td><%= policy.getPolicyType() %></td>
           <td><%= policy.getStartDate() %></td>
           <td><%= policy.getEndDate() %></td>
           <td><%= policy.getClient().getName() %></td>
+        </a>
       </tr>
       <%
-          }
+        }
       %>
-    </tr>
   </table>
 </div>
      
