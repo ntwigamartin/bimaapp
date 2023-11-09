@@ -14,9 +14,9 @@ public class HomeAction extends HttpServlet{
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/views/jsp/home.jsp");
-            dispatcher.forward(req, resp);
-           
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/views/jsp/home.jsp");
+        dispatcher.forward(req, resp);
+        
     }
    
 }

@@ -40,8 +40,8 @@
       <tr>
           <td><%= client.getNationalId() %></td>
           <td><%= client.getName() %></td>
-          <td><%= client.getEmail() %></td>
           <td><%= client.getTelephoneNumber() %></td>
+          <td><%= client.getEmail() %></td>
           <td><%= client.getAddress() %></td>
       </tr>
       <%
