@@ -2,19 +2,22 @@ package com.bimaapp.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.rmi.ServerException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bimaapp.bean.UserRegisterBean;
+import com.bimaapp.bean.UserRegisterBeanI;
+import com.bimaapp.model.User;
 
 @WebServlet("/register")
-public class UserRegisterAction extends HttpServlet{
+public class UserRegisterAction extends BaseAction{
+
+    UserRegisterBeanI userRegisterBean = new UserRegisterBean();
+    User user = new User();
     
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
@@ -27,7 +30,9 @@ public class UserRegisterAction extends HttpServlet{
         
         PrintWriter writer = resp.getWriter();
 
-        if (UserRegisterBean.createUser(req)) {
+        serializeForm(user, req.getParameterMap());
+
+        if (userRegisterBean.createUser(user, req.getParameter("confirmpassword"))) {
             resp.sendRedirect("./");
         }else {
             writer.print("<html><body>passwords do not match.<a href=\"./register\">Try again</a></body></html>");

@@ -10,9 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bimaapp.bean.NewPolicyBean;
+import com.bimaapp.bean.NewPolicyBeanI;
 
 @WebServlet("/policies")
 public class PolicySearchAction extends HttpServlet{
+
+    NewPolicyBeanI newPolicyBean = new NewPolicyBean();
     
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -23,7 +26,7 @@ public class PolicySearchAction extends HttpServlet{
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 
-        NewPolicyBean.createPolicy(req);
+        newPolicyBean.createPolicy(req);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/views/jsp/policy_search.jsp");
         dispatcher.forward(req, resp);

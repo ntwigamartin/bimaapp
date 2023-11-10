@@ -12,33 +12,21 @@ import javax.servlet.http.HttpSession;
 import com.bimaapp.database.Database;
 import com.bimaapp.model.User;
 
-public class LoginBean implements Serializable {
+public class LoginBean implements LoginBeanI, Serializable {
 
-    public static boolean loginUser(HttpServletRequest req, HttpServletResponse resp) {
+    public boolean authenticate(User user) {
         Database db = Database.getDbInstance();
 
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
+        String username = user.getUsername();
+        String password = user.getPassword();
 
-        if (username != null && password != null && db.getUsers() != null) {
-            for (User user : db.getUsers()) {
-                if (username.equals(user.getUserName()) && password.equals(user.getPassword())) {
+        for (User dbUser : db.getUsers()) {
+            if (username.equals(dbUser.getUsername()) && password.equals(dbUser.getPassword())) {
 
-                    HttpSession session = req.getSession(true);
-                    session.setAttribute("user", username);
-                    session.setAttribute("loggedInId", LocalDateTime.now().toString());
-
-                    Cookie cookie = new Cookie("user_id", UUID.randomUUID().toString());
-                    resp.addCookie(cookie);
-                    // cookie.setMaxAge(3600);
-
-                    return true;
-                }
+                return true;
             }
-            return false;
-        } else {
-            return false;
         }
+        return false;
     }
 
 }

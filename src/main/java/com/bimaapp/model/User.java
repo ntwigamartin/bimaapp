@@ -6,19 +6,21 @@ import com.bimaapp.enums.UserRole;
 
 public class User implements Serializable{
     private Long userId;
-    private String userName;
+    private String username;
     private String password;
     private UserRole userRole;
+
+    public User() {}
     
-    public User(Long userId, String userName, String password, UserRole userRole) {
+    public User(Long userId, String username, String password, UserRole userRole) {
         this.userId = userId;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.userRole = userRole;
     }
 
-    public User(String userName, String password, UserRole userRole) {
-        this.userName = userName;
+    public User(String username, String password, UserRole userRole) {
+        this.username = username;
         this.password = password;
         this.userRole = userRole;
     }
@@ -31,12 +33,12 @@ public class User implements Serializable{
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -57,7 +59,7 @@ public class User implements Serializable{
 
     @Override
     public String toString() {
-        return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", userRole=" + userRole
+        return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", userRole=" + userRole
                 + "]";
     }
     

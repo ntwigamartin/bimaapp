@@ -10,6 +10,8 @@ public class Client implements Serializable{
     private String telephoneNumber;
     private String email;
     private String address;
+
+    public Client() {}
     
     public Client(Long id, String nationalId, String name, String telephoneNumber, String email, String address) {
         this.id = id;

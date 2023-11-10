@@ -12,30 +12,31 @@ import java.util.Date;
 import org.apache.commons.lang3.StringUtils;
 
 @WebFilter(urlPatterns = "/*")
-public class AuthFilter  implements Filter {
+public class AuthFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         Filter.super.init(filterConfig);
     }
 
-
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest req =  (HttpServletRequest) servletRequest;
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
+            throws IOException, ServletException {
+                
+        HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
         HttpSession session = req.getSession();
 
         String servletPath = req.getServletPath();
 
         if (session.isNew() || StringUtils.isBlank((String) session.getAttribute("loggedInId"))) {
-            System.out.println("1");
+
             session.invalidate();
-            if(servletPath.equals("/login") || servletPath.contains(".jsp") || servletPath.contains(".css") || servletPath.equals("/register")){
-                System.out.println("2");
+
+            if (servletPath.equals("/login") || servletPath.contains(".jsp") || servletPath.contains(".css")
+                    || servletPath.equals("/register")) {
                 filterChain.doFilter(req, res);
             } else {
-                System.out.println("3");
                 res.sendRedirect(req.getContextPath() + "/");
                 res.getWriter().flush();
             }
@@ -43,7 +44,7 @@ public class AuthFilter  implements Filter {
             if (StringUtils.isNotBlank((String) session.getAttribute("loggedInId"))) {
                 res.addHeader("AuthTime", DateFormat.getDateTimeInstance().format(new Date()));
                 filterChain.doFilter(servletRequest, servletResponse);
-            }else {
+            } else {
                 res.sendRedirect(req.getContextPath() + "/");
                 servletResponse.getWriter().flush();
 

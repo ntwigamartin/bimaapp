@@ -10,9 +10,9 @@ import com.bimaapp.enums.PolicyType;
 import com.bimaapp.model.Client;
 import com.bimaapp.model.Policy;
 
-public class NewPolicyBean implements Serializable{
+public class NewPolicyBean implements NewPolicyBeanI, Serializable{
 
-    public static void createPolicy(HttpServletRequest req) {
+    public void createPolicy(HttpServletRequest req) {
         String startDate = req.getParameter("start_date");
         String endDate = req.getParameter("end_date");
         PolicyType policyType = getPolicyType(req.getParameter("policy_type"));
@@ -22,7 +22,7 @@ public class NewPolicyBean implements Serializable{
         Database.getDbInstance().getPolicies().add(new Policy(startDate, endDate, policyNumber, policyType, client));
     }
 
-    public static PolicyType getPolicyType(String paramValue) {
+    public PolicyType getPolicyType(String paramValue) {
         if (paramValue.equalsIgnoreCase("private")) {
             return PolicyType.PRIVATE;
         }else if (paramValue.equalsIgnoreCase("commercial")) {
@@ -32,7 +32,7 @@ public class NewPolicyBean implements Serializable{
         }
     }
 
-    public static Client getClient(String paramValue) {
+    public Client getClient(String paramValue) {
         List<Client> clients = Database.getDbInstance().getClients();
         for (Client client : clients) {
             if (client.getNationalId().equals(paramValue)) {
@@ -42,7 +42,7 @@ public class NewPolicyBean implements Serializable{
         return null;
     }
 
-    public static String generatePolicyNumber() {
+    public String generatePolicyNumber() {
         List<Policy> policies = Database.getDbInstance().getPolicies();
         String policyStr = policies.get(policies.size() - 1).getNumber();
         int policyNum = Integer.parseInt(policyStr);
