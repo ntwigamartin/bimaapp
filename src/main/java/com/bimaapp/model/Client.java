@@ -2,13 +2,27 @@ package com.bimaapp.model;
 
 import java.io.Serializable;
 
+import com.bimaapp.utils.HtmlFormClass;
+import com.bimaapp.utils.HtmlFormField;
+
+@HtmlFormClass(formActionUrl = "./clients")
 public class Client implements Serializable{
 
     private Long id;
+
+    @HtmlFormField(label="National ID", type="number")
     private String nationalId;
+
+    @HtmlFormField(label="Client Name")
     private String name;
+
+    @HtmlFormField(label="Telephone Number")
     private String telephoneNumber;
+
+    @HtmlFormField(label="Email")
     private String email;
+
+    @HtmlFormField(label="Address")
     private String address;
 
     public Client() {}
