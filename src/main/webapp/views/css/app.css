@@ -69,3 +69,7 @@ tr:nth-child(even) {
 input {
   margin-right: 5px;
 }
+
+.client_detail h1{
+  align-items: center;
+}

@@ -25,7 +25,7 @@
       for (Client client : clients) {
       %>
       <tr>
-          <td><%= client.getNationalId() %></td>
+          <td><a href="./client?national_id=<%= client.getNationalId() %>"><%= client.getNationalId() %></a></td>
           <td><%= client.getName() %></td>
           <td><%= client.getTelephoneNumber() %></td>
           <td><%= client.getEmail() %></td>

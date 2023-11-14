@@ -16,7 +16,7 @@ public class NewPolicyBean implements NewPolicyBeanI, Serializable{
         String startDate = req.getParameter("start_date");
         String endDate = req.getParameter("end_date");
         PolicyType policyType = getPolicyType(req.getParameter("policy_type"));
-        Client client = getClient(req.getParameter("national_id"));
+        Client client = new ClientSearchBean().getClient(req.getParameter("national_id"));
         String policyNumber = generatePolicyNumber();
 
         Database.getDbInstance().getPolicies().add(new Policy(startDate, endDate, policyNumber, policyType, client));
@@ -30,16 +30,6 @@ public class NewPolicyBean implements NewPolicyBeanI, Serializable{
         }else {
             return null;
         }
-    }
-
-    public Client getClient(String paramValue) {
-        List<Client> clients = Database.getDbInstance().getClients();
-        for (Client client : clients) {
-            if (client.getNationalId().equals(paramValue)) {
-                return client;
-            }
-        }
-        return null;
     }
 
     public String generatePolicyNumber() {

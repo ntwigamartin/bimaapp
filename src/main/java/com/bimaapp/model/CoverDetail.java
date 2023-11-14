@@ -9,13 +9,13 @@ public class CoverDetail implements Serializable{
     private Long id;
     private String vehicleReg;
     private String vehicleMake;
-    private String vehicleValue;
+    private int vehicleValue;
     private CoverType coverType;
     private BigDecimal premium;
     private String terms;
     private Policy policy;
     
-    public CoverDetail(Long id, String vehicleReg, String vehicleMake, String vehicleValue, CoverType coverType,
+    public CoverDetail(Long id, String vehicleReg, String vehicleMake, int vehicleValue, CoverType coverType,
             BigDecimal premium, String terms, Policy policy) {
         this.id = id;
         this.vehicleReg = vehicleReg;
@@ -27,7 +27,7 @@ public class CoverDetail implements Serializable{
         this.policy = policy;
     }
 
-    public CoverDetail(String vehicleReg, String vehicleMake, String vehicleValue, CoverType coverType,
+    public CoverDetail(String vehicleReg, String vehicleMake, int vehicleValue, CoverType coverType,
             BigDecimal premium, String terms, Policy policy) {
         this.vehicleReg = vehicleReg;
         this.vehicleMake = vehicleMake;
@@ -72,11 +72,11 @@ public class CoverDetail implements Serializable{
         this.vehicleMake = vehicleMake;
     }
 
-    public String getVehicleValue() {
+    public int getVehicleValue() {
         return vehicleValue;
     }
 
-    public void setVehicleValue(String vehicleValue) {
+    public void setVehicleValue(int vehicleValue) {
         this.vehicleValue = vehicleValue;
     }
 

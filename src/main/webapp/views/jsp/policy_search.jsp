@@ -40,13 +40,11 @@
         for (Policy policy : policies) {
       %>
       <tr>
-        <a href="./policy">
-          <td><%= policy.getNumber() %></td>
+          <td><a href="./policy?policy_num=<%= policy.getNumber() %>"><%= policy.getNumber() %></a></td>
           <td><%= policy.getPolicyType() %></td>
           <td><%= policy.getStartDate() %></td>
           <td><%= policy.getEndDate() %></td>
           <td><%= policy.getClient().getName() %></td>
-        </a>
       </tr>
       <%
         }

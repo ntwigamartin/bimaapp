@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bimaapp.model.Client;
+import com.bimaapp.model.CoverDetail;
 import com.bimaapp.model.Policy;
 import com.bimaapp.model.User;
 
@@ -13,6 +14,7 @@ public class Database implements Serializable {
     private List<User> users = new ArrayList<User>();
     private List<Client> clients = new ArrayList<Client>();
     private List<Policy> policies = new ArrayList<Policy>();
+    private List<CoverDetail> coverDetails = new ArrayList<CoverDetail>();
 
     private static Database dbInstance;
 
@@ -47,6 +49,14 @@ public class Database implements Serializable {
 
     public void setPolicies(List<Policy> policies) {
         this.policies = policies;
+    }
+
+    public List<CoverDetail> getCoverDetails() {
+        return coverDetails;
+    }
+    
+    public void setCoverDetails(List<CoverDetail> coverDetails) {
+        this.coverDetails = coverDetails;
     }
     
 }
