@@ -12,7 +12,9 @@
 
 <div class="main">
   <h2>Add New Client</h2>
-  <%= RenderHtmlForm.renderForm(com.bimaapp.model.Client.class)%>
+  <form action="./clients" method="POST">
+    <%= RenderHtmlForm.renderForm(com.bimaapp.model.Client.class)%>
+  </form>
   <table>
     <tr>
       <th>National ID</th>

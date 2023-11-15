@@ -1,4 +1,5 @@
-<%@ page import="com.bimaapp.model.Client, java.util.List, com.bimaapp.bean.PolicySearchBean, com.bimaapp.model.Policy, com.bimaapp.bean.ClientSearchBean"%>
+<%@ page import="com.bimaapp.model.Client, java.util.List, com.bimaapp.bean.PolicySearchBean, 
+com.bimaapp.model.Policy, com.bimaapp.bean.ClientSearchBean, com.bimaapp.utils.RenderHtmlForm"%>
 
 <!DOCTYPE html>
 <html>
@@ -24,16 +25,14 @@
     <div class="">
             <h2>Add New POlicy</h2>
             <form action="./client?national_id=<%= request.getParameter("national_id")%>" method="POST">
+            
                 <label for="policy_type">Policy Type:</label>
                 <select id="dropdown" name="policy_type">
                     <option value="private">Private</option>
                     <option value="commercial">Commercial</option>
                 </select>
-                <label for="start_date">Start Date:</label>
-                <input id="start_date" type="date" name="start_date" class="form__input" placeholder="Start Date" required>
-                <label for="end_date">End Date:</label>
-                <input id="end_date" type="date" name="end_date" class="form__input" placeholder="End Date" required>
-                <input type="submit" value="Submit">
+
+                <%= RenderHtmlForm.renderForm(com.bimaapp.model.Policy.class)%>
             </form>
     </div>
     <div class="">

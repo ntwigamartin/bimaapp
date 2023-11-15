@@ -13,8 +13,8 @@ import com.bimaapp.model.Policy;
 public class NewPolicyBean implements NewPolicyBeanI, Serializable{
 
     public void createPolicy(HttpServletRequest req) {
-        String startDate = req.getParameter("start_date");
-        String endDate = req.getParameter("end_date");
+        String startDate = req.getParameter("startDate");
+        String endDate = req.getParameter("endDate");
         PolicyType policyType = getPolicyType(req.getParameter("policy_type"));
         Client client = new ClientSearchBean().getClient(req.getParameter("national_id"));
         String policyNumber = generatePolicyNumber();

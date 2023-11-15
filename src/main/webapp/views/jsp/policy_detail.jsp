@@ -1,4 +1,5 @@
-<%@ page import="com.bimaapp.database.Database, com.bimaapp.model.CoverDetail, java.util.List, com.bimaapp.model.Policy, com.bimaapp.bean.PolicySearchBean"%>
+<%@ page import="com.bimaapp.database.Database, com.bimaapp.model.CoverDetail, java.util.List, com.bimaapp.model.Policy, 
+com.bimaapp.bean.PolicySearchBean, com.bimaapp.utils.RenderHtmlForm"%>
 
 <!DOCTYPE html>
 <html>
@@ -24,20 +25,14 @@
     <div class="">
             <h2>Add New Policy Detail</h2>
             <form action="./policy?policy_num=<%= request.getParameter("policy_num")%>" method="POST">
-                <label for="vehicleReg">vehicle Reg:</label>
-                <input id="vehicleReg" type="text" name="vehicleReg" class="form__input" placeholder="vehicle Reg" required>
-                <label for="vehicleMake">vehicle Make:</label>
-                <input id="vehicleMake" type="text" name="vehicleMake" class="form__input" placeholder="vehicle Make" required>
-                <label for="vehicleValue">vehicle Value:</label>
-                <input id="vehicleValue" type="number" name="vehicleValue" class="form__input" placeholder="vehicle Value" required>
+            
                 <label for="cover_type">Cover Type:</label>
                 <select id="dropdown" name="cover_type">
                     <option value="thirdparty">Third Party</option>
                     <option value="comprehensive">Comprehensive</option>
                 </select>
-                <label for="terms">Terms:</label>
-                <input id="terms" type="text" name="terms" class="form__input" placeholder="Terms" required>
-                <input type="submit" value="Submit">
+
+                <%= RenderHtmlForm.renderForm(com.bimaapp.model.CoverDetail.class)%>
             </form>
     </div>
     <div class="">

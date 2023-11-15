@@ -9,5 +9,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface HtmlFormField {
     String label() default "";
-    String type() default "text";
+    String inputType() default "text";
+    String fieldType() default "input";
 }

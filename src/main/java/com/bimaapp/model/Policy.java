@@ -3,11 +3,18 @@ package com.bimaapp.model;
 import java.io.Serializable;
 
 import com.bimaapp.enums.PolicyType;
+import com.bimaapp.utils.HtmlFormField;
 
 public class Policy implements Serializable{
+
     private Long id;
+
+    @HtmlFormField(label = "Start Date", inputType = "date")
     private String startDate;
+
+    @HtmlFormField(label = "Start Date", inputType = "date")
     private String endDate;
+    
     private String number;
     private PolicyType policyType;
     private Client client;

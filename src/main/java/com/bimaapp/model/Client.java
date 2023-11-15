@@ -10,7 +10,7 @@ public class Client implements Serializable{
 
     private Long id;
 
-    @HtmlFormField(label="National ID", type="number")
+    @HtmlFormField(label="National ID", inputType ="number")
     private String nationalId;
 
     @HtmlFormField(label="Client Name")

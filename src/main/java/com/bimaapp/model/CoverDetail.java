@@ -4,15 +4,26 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 import com.bimaapp.enums.CoverType;
+import com.bimaapp.utils.HtmlFormField;
 
 public class CoverDetail implements Serializable{
     private Long id;
+
+    @HtmlFormField(label="Vehicle Reg")
     private String vehicleReg;
+
+    @HtmlFormField(label="Vehicle Make")
     private String vehicleMake;
+
+    @HtmlFormField(label="Vehicle Value", inputType = "number")
     private int vehicleValue;
+
     private CoverType coverType;
     private BigDecimal premium;
+
+    @HtmlFormField(label="Terms")
     private String terms;
+    
     private Policy policy;
     
     public CoverDetail(Long id, String vehicleReg, String vehicleMake, int vehicleValue, CoverType coverType,
