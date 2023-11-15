@@ -26,7 +26,7 @@ public class RenderHtmlForm implements Serializable{
             
             htmlForm += "<label for=\"" + fieldName + "\">" + formField.label() + ":</label><br>";
             htmlForm += "<input type=\"" +formField.inputType()+ "\" id=\"" + fieldName + "\" name=\"" + fieldName 
-            + "\"class=\"form_input\" ><br>";
+            + "\"class=\"form_input\"" + "required>";
             
             
         }

@@ -11,19 +11,9 @@
 <jsp:include page="menu_bar.jsp"/>
 
 <div class="main">
-  <h2>Add New POlicy</h2>
+  <h2>Search Policy</h2>
   <form action="./policies" method="POST">
-    <label for="policy_type">Policy Type:</label>
-    <select id="dropdown" name="policy_type">
-        <option value="private">Private</option>
-        <option value="commercial">Commercial</option>
-    </select>
-    <label for="start_date">Start Date:</label>
-    <input id="start_date" type="date" name="start_date" class="form__input" placeholder="Start Date" required>
-    <label for="end_date">End Date:</label>
-    <input id="end_date" type="date" name="end_date" class="form__input" placeholder="End Date" required>
-    <label for="national_id">National Id:</label>
-    <input id="national_id" type="number" name="national_id" class="form__input" placeholder="National ID" required>
+    <input id="search" type="text" name="search" class="form__input" placeholder="search policy" required>
     <input type="submit" value="Submit">
   </form>
 

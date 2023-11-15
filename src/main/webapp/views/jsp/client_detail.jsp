@@ -5,25 +5,27 @@ com.bimaapp.model.Policy, com.bimaapp.bean.ClientSearchBean, com.bimaapp.utils.R
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" ><link rel="stylesheet" href="views/css/app.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="views/css/app.css?version=2">
 </head>
 <body>
 
 <jsp:include page="menu_bar.jsp"/>
 
 <div class="main">
-    <div class="client_detail">
-        <h1> Client Details</h1>
+    <h1> Client Details</h1>
+    <div class="detail">
         <% Client client = new ClientSearchBean().getClient(request.getParameter("national_id"));%>
-        <h3>NAME:</h3> <span> <%=client.getName()%> </span>
-        <h3>NATIONAL ID:</h3> <span> <%=client.getNationalId()%> </span>
-        <h3>TELEPHONE NUMBER:</h3> <span> <%=client.getTelephoneNumber()%> </span>
-        <h3>EMAIL:</h3> <span> <%=client.getEmail()%> </span>
-        <h3>ADDRESS:</h3> <span> <%=client.getAddress()%> </span>
-        
+        <h3>NAME:<span> <%=client.getName()%> </span></h3> 
+        <h3>NATIONAL ID: <span> <%=client.getNationalId()%> </span></h3> 
+        <h3>TELEPHONE NUMBER: <span> <%=client.getTelephoneNumber()%> </span></h3>
+        <h3>EMAIL: <span> <%=client.getEmail()%> </span></h3>
+        <h3>ADDRESS: <span> <%=client.getAddress()%> </span></h3>
     </div>
-    <div class="">
-            <h2>Add New POlicy</h2>
+    <div class="form">
+        <button id="openFormBtn">Add New Policy</button>
+        <div class="form-container" id="formContainer">
+            <h2>Add New Policy</h2>
             <form action="./client?national_id=<%= request.getParameter("national_id")%>" method="POST">
             
                 <label for="policy_type">Policy Type:</label>
@@ -34,8 +36,11 @@ com.bimaapp.model.Policy, com.bimaapp.bean.ClientSearchBean, com.bimaapp.utils.R
 
                 <%= RenderHtmlForm.renderForm(com.bimaapp.model.Policy.class)%>
             </form>
+            <button id="closeFormBtn">Close</button>
+        </div>
+        <div class="overlay" id="overlay"></div>
     </div>
-    <div class="">
+    <div class="table">
         <table>
             <tr>
                 <th>Policy Number</th>
@@ -59,6 +64,7 @@ com.bimaapp.model.Policy, com.bimaapp.bean.ClientSearchBean, com.bimaapp.utils.R
             %>
         </table>
     </div>
-</div>     
+</div>
+<jsp:include page="script.jsp"/>     
 </body>
 </html>
