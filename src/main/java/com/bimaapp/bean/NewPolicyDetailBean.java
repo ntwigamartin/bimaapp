@@ -2,8 +2,7 @@ package com.bimaapp.bean;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-
-import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 import com.bimaapp.database.Database;
 import com.bimaapp.enums.CoverType;
@@ -13,13 +12,14 @@ import com.bimaapp.model.Policy;
 public class NewPolicyDetailBean implements NewPolicyDetailBeanI,  Serializable {
 
     @Override
-    public void createCoverDetail(HttpServletRequest req) {
-        String vehicleReg = req.getParameter("vehicleReg");
-        String vehicleMake = req.getParameter("vehicleMake");
-        int vehicleValue = Integer.parseInt(req.getParameter("vehicleValue"));
-        CoverType coverType = getCoverType(req.getParameter("cover_type"));
-        String terms = req.getParameter("terms");
-        Policy policy = new PolicySearchBean().getPolicy(req.getParameter("policy_num"));
+    public void createCoverDetail(Map<String, String> paramMap) {
+
+        String vehicleReg = (String) paramMap.get("vehicleReg");
+        String vehicleMake = (String) paramMap.get("vehicleMake");
+        int vehicleValue = Integer.parseInt((String) paramMap.get("vehicleValue"));
+        CoverType coverType = getCoverType((String) paramMap.get("cover_type"));
+        String terms = (String) paramMap.get("terms");
+        Policy policy = new PolicySearchBean().getPolicy((String) paramMap.get("policy_num"));
         BigDecimal premium = new ComputePremiumBean().computePremium(vehicleValue, policy.getPolicyType(), coverType);
 
         Database.getDbInstance().getCoverDetails().add(new CoverDetail(vehicleReg, vehicleMake, vehicleValue, coverType, premium, terms, policy));

@@ -9,7 +9,7 @@ import org.apache.commons.beanutils.BeanUtils;
 
 public class BaseAction extends HttpServlet{
     
-        public void serializeForm(Object bean, Map<String, ? extends Object> requestMap){
+    public void serializeForm(Object bean, Map<String, ? extends Object> requestMap){
         try {
             BeanUtils.populate(bean, requestMap);
         } catch (IllegalAccessException e) {

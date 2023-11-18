@@ -24,12 +24,5 @@ public class PolicySearchAction extends HttpServlet{
 
     }
 
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-
-        newPolicyBean.createPolicy(req);
-
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/views/jsp/policy_search.jsp");
-        dispatcher.forward(req, resp);
-
-    }
+    
 }

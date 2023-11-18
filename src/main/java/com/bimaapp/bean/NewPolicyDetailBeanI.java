@@ -1,7 +1,7 @@
 package com.bimaapp.bean;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 public interface NewPolicyDetailBeanI {
-    void createCoverDetail(HttpServletRequest req);
+    void createCoverDetail(Map<String, String> paramMap);
 }

@@ -9,4 +9,5 @@ public interface PolicySearchBeanI {
     List<Policy> getClientPolicies(String paramValue);
     Policy getPolicy(String paramValue);
     List<CoverDetail> getPolicyCoverDetails(String paramValue);
+    List<Policy> searchPolicies(String paramValue);
 }

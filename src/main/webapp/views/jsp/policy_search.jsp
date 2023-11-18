@@ -1,4 +1,5 @@
-<%@ page import="com.bimaapp.database.Database, java.util.List, com.bimaapp.model.Policy"%>
+<%@ page import="com.bimaapp.database.Database, java.util.List, 
+com.bimaapp.model.Policy, com.bimaapp.bean.PolicySearchBean"%>
 
 <!DOCTYPE html>
 <html>
@@ -11,12 +12,13 @@
 <jsp:include page="menu_bar.jsp"/>
 
 <div class="main">
-  <h2>Search Policy</h2>
-  <form action="./policies" method="POST">
-    <input id="search" type="text" name="search" class="form__input" placeholder="search policy" required>
-    <input type="submit" value="Submit">
-  </form>
-
+  <h1>Search Policy</h1>
+  <div class="search">
+    <form action="./policies" method="GET">
+      <input type="text" name="query" placeholder="Search Policy">
+      <button type="submit">Search</button>
+    </form>
+  </div>
   <table>
     <tr>
       <th>Policy Number</th>
@@ -26,7 +28,14 @@
       <th>Client Name</th>
     </tr>
       <%
-      List<Policy> policies = Database.getDbInstance().getPolicies();
+      String searchQuery = request.getParameter("query");
+      List<Policy> policies;
+
+      if (searchQuery != null && !searchQuery.isEmpty()) {
+          policies = new PolicySearchBean().searchPolicies(searchQuery);
+      } else {
+          policies = Database.getDbInstance().getPolicies();
+      }
         for (Policy policy : policies) {
       %>
       <tr>

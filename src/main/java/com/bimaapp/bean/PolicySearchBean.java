@@ -3,6 +3,7 @@ package com.bimaapp.bean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.bimaapp.database.Database;
 import com.bimaapp.model.CoverDetail;
@@ -48,5 +49,12 @@ public class PolicySearchBean implements PolicySearchBeanI, Serializable{
 
         return policyCoverDetails;
     }
-    
+
+    @Override
+    public List<Policy> searchPolicies(String query) {
+        return policies.stream()
+            .filter(policy -> policy.getNumber().contains(query))
+            .collect(Collectors.toList());
+    }
+ 
 }

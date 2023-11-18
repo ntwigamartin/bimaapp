@@ -1,6 +1,8 @@
 package com.bimaapp.action;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,7 +26,15 @@ public class PolicyDetailAction extends BaseAction{
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         
         NewPolicyDetailBeanI newPolicyDetailBean = new NewPolicyDetailBean();
-        newPolicyDetailBean.createCoverDetail(req);
+        Map<String, String> paramMap = new HashMap<>();
+
+        for (String paramName : req.getParameterMap().keySet()) {
+            String paramValue = req.getParameter(paramName);
+
+            paramMap.put(paramName, paramValue);
+        }
+
+        newPolicyDetailBean.createCoverDetail(paramMap);
         
         RequestDispatcher dispatcher = req.getRequestDispatcher("/views/jsp/policy_detail.jsp");
         dispatcher.forward(req, resp);

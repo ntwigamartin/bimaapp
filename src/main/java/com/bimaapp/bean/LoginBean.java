@@ -1,13 +1,6 @@
 package com.bimaapp.bean;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.UUID;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.bimaapp.database.Database;
 import com.bimaapp.model.User;

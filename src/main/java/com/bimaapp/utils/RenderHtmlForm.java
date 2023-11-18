@@ -7,10 +7,6 @@ public class RenderHtmlForm implements Serializable{
     
     public static String renderForm(Class<?> model) {
 
-        HtmlFormClass formMarker = model.getAnnotation(HtmlFormClass.class);
-
-        // String htmlForm = "<form action=\"" + formMarker.formActionUrl() + "\" method=\"" + formMarker.formHttpMethod() + "\">";
-
         String htmlForm = "";
         Field [] fields = model.getDeclaredFields();
 
