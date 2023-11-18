@@ -2,12 +2,23 @@ package com.bimaapp.model;
 
 import java.io.Serializable;
 
+import com.bimaapp.database.helper.DbTable;
+import com.bimaapp.database.helper.DbTableColumn;
 import com.bimaapp.enums.UserRole;
 
+@DbTable(name = "users")
 public class User implements Serializable{
+
+    @DbTableColumn(name = "id", definition = "INT PRIMARY KEY AUTO_INCREMENT")
     private Long userId;
+
+    @DbTableColumn(name = "username")
     private String username;
+
+    @DbTableColumn(name = "password")
     private String password;
+
+    @DbTableColumn(name = "userrole")
     private UserRole userRole;
 
     public User() {}

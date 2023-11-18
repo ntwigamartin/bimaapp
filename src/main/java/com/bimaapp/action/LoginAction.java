@@ -2,6 +2,7 @@ package com.bimaapp.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -34,20 +35,24 @@ public class LoginAction extends BaseAction {
 
         serializeForm(user, req.getParameterMap());
         
-        if (loginBean.authenticate(user)) {
+        try {
+            if (loginBean.authenticate(user)) {
 
-            HttpSession session = req.getSession(true);
-            session.setAttribute("user", user.getUsername());
-            session.setAttribute("loggedInId", LocalDateTime.now().toString());
+                HttpSession session = req.getSession(true);
+                session.setAttribute("user", user.getUsername());
+                session.setAttribute("loggedInId", LocalDateTime.now().toString());
 
-            Cookie cookie = new Cookie("user_id", UUID.randomUUID().toString());
-            resp.addCookie(cookie);
-            // cookie.setMaxAge(3600)
+                Cookie cookie = new Cookie("user_id", UUID.randomUUID().toString());
+                resp.addCookie(cookie);
+                // cookie.setMaxAge(3600)
 
-            resp.sendRedirect("./home");
+                resp.sendRedirect("./home");
 
-        } else {
-            writer.print("<html><body>Invalid username or password. <a href=\"./login\">Login Again</a></body></html>");
+            } else {
+                writer.print("<html><body>Invalid username or password. <a href=\"./login\">Login Again</a></body></html>");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
