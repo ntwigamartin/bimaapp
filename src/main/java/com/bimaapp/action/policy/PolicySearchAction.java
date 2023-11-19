@@ -1,4 +1,4 @@
-package com.bimaapp.action;
+package com.bimaapp.action.policy;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bimaapp.bean.NewPolicyBean;
-import com.bimaapp.bean.NewPolicyBeanI;
+import com.bimaapp.bean.policy.NewPolicyBean;
+import com.bimaapp.bean.policy.NewPolicyBeanI;
 
 @WebServlet("/policies")
 public class PolicySearchAction extends HttpServlet{

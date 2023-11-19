@@ -1,5 +1,5 @@
 <%@ page import="com.bimaapp.utils.RenderHtmlForm, com.bimaapp.database.Database, 
-java.util.List, com.bimaapp.model.Client, com.bimaapp.bean.ClientSearchBean"%>
+java.util.List, com.bimaapp.model.Client, com.bimaapp.bean.client.ClientSearchBean"%>
 
 <!DOCTYPE html>
 <html>
@@ -39,6 +39,7 @@ java.util.List, com.bimaapp.model.Client, com.bimaapp.bean.ClientSearchBean"%>
       <th>Telephone Number</th>
       <th>Email</th>
       <th>Address</th>
+    </tr>
       <%
       String searchQuery = request.getParameter("query");
       List<Client> clients;
@@ -46,7 +47,7 @@ java.util.List, com.bimaapp.model.Client, com.bimaapp.bean.ClientSearchBean"%>
       if (searchQuery != null && !searchQuery.isEmpty()) {
           clients = new ClientSearchBean().searchClients(searchQuery);
       } else {
-          clients = Database.getDbInstance().getClients();
+          clients = new ClientSearchBean().retrieveDbClients();
       }
 
       for (Client client : clients) {
@@ -61,7 +62,6 @@ java.util.List, com.bimaapp.model.Client, com.bimaapp.bean.ClientSearchBean"%>
       <%
       }
       %>
-    </tr>
   </table>
 </div>
 <jsp:include page="script.jsp"/>

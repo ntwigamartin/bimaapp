@@ -2,26 +2,35 @@ package com.bimaapp.model;
 
 import java.io.Serializable;
 
+import com.bimaapp.database.helper.DbTable;
+import com.bimaapp.database.helper.DbTableColumn;
 import com.bimaapp.utils.HtmlFormClass;
 import com.bimaapp.utils.HtmlFormField;
 
+@DbTable(name = "clients")
 @HtmlFormClass(formActionUrl = "./clients")
 public class Client implements Serializable{
 
+    @DbTableColumn(name = "id", definition = "INT PRIMARY KEY AUTO_INCREMENT")
     private Long id;
 
+    @DbTableColumn(name = "national_id")
     @HtmlFormField(label="National ID", inputType ="number")
     private String nationalId;
 
+    @DbTableColumn(name = "client_name")
     @HtmlFormField(label="Client Name")
     private String name;
 
+    @DbTableColumn(name = "telephone_number")
     @HtmlFormField(label="Telephone Number")
     private String telephoneNumber;
 
+    @DbTableColumn(name = "email")
     @HtmlFormField(label="Email")
     private String email;
 
+    @DbTableColumn(name = "address")
     @HtmlFormField(label="Address")
     private String address;
 

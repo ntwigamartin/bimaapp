@@ -1,4 +1,4 @@
-package com.bimaapp.action;
+package com.bimaapp.action.claim;
 
 import java.io.IOException;
 
@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.bimaapp.action.BaseAction;
 
 @WebServlet("/claims")
 public class ClaimsSearchAction extends BaseAction{

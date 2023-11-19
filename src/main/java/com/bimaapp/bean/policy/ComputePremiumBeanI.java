@@ -1,4 +1,4 @@
-package com.bimaapp.bean;
+package com.bimaapp.bean.policy;
 
 import java.math.BigDecimal;
 

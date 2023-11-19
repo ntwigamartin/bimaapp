@@ -1,4 +1,4 @@
-package com.bimaapp.action;
+package com.bimaapp.action.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,8 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bimaapp.bean.LoginBean;
-import com.bimaapp.bean.LoginBeanI;
+import com.bimaapp.action.BaseAction;
+import com.bimaapp.bean.user.LoginBean;
+import com.bimaapp.bean.user.LoginBeanI;
 import com.bimaapp.model.User;
 
 @WebServlet("/login")

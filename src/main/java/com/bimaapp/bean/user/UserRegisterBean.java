@@ -1,4 +1,4 @@
-package com.bimaapp.bean;
+package com.bimaapp.bean.user;
 
 import java.io.Serializable;
 import java.sql.PreparedStatement;

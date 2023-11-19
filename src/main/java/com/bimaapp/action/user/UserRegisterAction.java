@@ -1,4 +1,4 @@
-package com.bimaapp.action;
+package com.bimaapp.action.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,8 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bimaapp.bean.UserRegisterBean;
-import com.bimaapp.bean.UserRegisterBeanI;
+import com.bimaapp.action.BaseAction;
+import com.bimaapp.bean.user.UserRegisterBean;
+import com.bimaapp.bean.user.UserRegisterBeanI;
 import com.bimaapp.model.User;
 
 @WebServlet("/register")

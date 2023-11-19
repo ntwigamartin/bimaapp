@@ -1,4 +1,4 @@
-package com.bimaapp.action;
+package com.bimaapp.action.policy;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -10,8 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bimaapp.bean.NewPolicyDetailBean;
-import com.bimaapp.bean.NewPolicyDetailBeanI;
+import com.bimaapp.action.BaseAction;
+import com.bimaapp.bean.policy.NewPolicyDetailBean;
+import com.bimaapp.bean.policy.NewPolicyDetailBeanI;
 
 @WebServlet("/policy")
 public class PolicyDetailAction extends BaseAction{

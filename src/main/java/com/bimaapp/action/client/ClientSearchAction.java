@@ -1,4 +1,4 @@
-package com.bimaapp.action;
+package com.bimaapp.action.client;
 
 import java.io.IOException;
 
@@ -8,8 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bimaapp.bean.NewClientBean;
-import com.bimaapp.bean.NewClientBeanI;
+import com.bimaapp.action.BaseAction;
+import com.bimaapp.bean.client.NewClientBean;
+import com.bimaapp.bean.client.NewClientBeanI;
 import com.bimaapp.model.Client;
 
 @WebServlet("/clients")

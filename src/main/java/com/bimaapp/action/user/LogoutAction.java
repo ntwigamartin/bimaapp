@@ -1,4 +1,4 @@
-package com.bimaapp.action;
+package com.bimaapp.action.user;
 
 import java.io.IOException;
 

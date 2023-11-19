@@ -1,2 +1,3 @@
-# bimaapp
-A Motor Insurance Application
+# Bima-App
+
+A Motor insurance enterprise system.

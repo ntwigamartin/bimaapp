@@ -1,9 +1,10 @@
-package com.bimaapp.bean;
+package com.bimaapp.bean.policy;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import com.bimaapp.bean.client.ClientSearchBean;
 import com.bimaapp.database.Database;
 import com.bimaapp.enums.PolicyType;
 import com.bimaapp.model.Client;
