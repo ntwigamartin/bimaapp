@@ -10,13 +10,13 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import com.bimaapp.app.model.Client;
+import com.bimaapp.app.model.CoverDetail;
+import com.bimaapp.app.model.Policy;
+import com.bimaapp.app.model.User;
 import com.bimaapp.database.MysqlDatabase;
 import com.bimaapp.database.helper.DbTable;
 import com.bimaapp.database.helper.DbTableColumn;
-import com.bimaapp.model.Client;
-import com.bimaapp.model.CoverDetail;
-import com.bimaapp.model.Policy;
-import com.bimaapp.model.User;
 
 @WebListener
 public class AppServletContextListener implements ServletContextListener{

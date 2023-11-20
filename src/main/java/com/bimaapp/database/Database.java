@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.bimaapp.model.Client;
-import com.bimaapp.model.CoverDetail;
-import com.bimaapp.model.Policy;
-import com.bimaapp.model.User;
+import com.bimaapp.app.model.Client;
+import com.bimaapp.app.model.CoverDetail;
+import com.bimaapp.app.model.Policy;
+import com.bimaapp.app.model.User;
 
 public class Database implements Serializable {
     

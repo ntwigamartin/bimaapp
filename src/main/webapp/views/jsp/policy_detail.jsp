@@ -1,5 +1,5 @@
-<%@ page import="com.bimaapp.database.Database, com.bimaapp.model.CoverDetail, java.util.List, com.bimaapp.model.Policy, 
-com.bimaapp.bean.policy.PolicySearchBean, com.bimaapp.utils.RenderHtmlForm"%>
+<%@ page import="com.bimaapp.app.bean.coverdetail.CoverDetailSearchBean, com.bimaapp.app.model.CoverDetail, 
+java.util.List, com.bimaapp.app.model.Policy, com.bimaapp.app.bean.policy.PolicySearchBean, com.bimaapp.utils.RenderHtmlForm"%>
 
 <!DOCTYPE html>
 <html>
@@ -34,7 +34,7 @@ com.bimaapp.bean.policy.PolicySearchBean, com.bimaapp.utils.RenderHtmlForm"%>
                     <option value="comprehensive">Comprehensive</option>
                 </select>
 
-                <%= RenderHtmlForm.renderForm(com.bimaapp.model.CoverDetail.class)%>
+                <%= RenderHtmlForm.renderForm(com.bimaapp.app.model.CoverDetail.class)%>
             </form>
             <button id="closeFormBtn">Close</button>
         </div>
@@ -50,7 +50,7 @@ com.bimaapp.bean.policy.PolicySearchBean, com.bimaapp.utils.RenderHtmlForm"%>
                 <th>Premium</th>
             </tr>
             <%
-            List<CoverDetail> policyCoverDetails = new PolicySearchBean().getPolicyCoverDetails(request.getParameter("policy_num"));
+            List<CoverDetail> policyCoverDetails = new CoverDetailSearchBean().getPolicyCoverDetails(request.getParameter("policy_num"));
 
                 for (CoverDetail coverDetail : policyCoverDetails) {
             %>

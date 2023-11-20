@@ -1,4 +1,4 @@
-<%@ page import="java.util.List, com.bimaapp.model.Policy, com.bimaapp.bean.policy.PolicySearchBean"%>
+<%@ page import="java.util.List, com.bimaapp.app.model.Policy, com.bimaapp.app.bean.policy.PolicySearchBean"%>
 
 <!DOCTYPE html>
 <html>

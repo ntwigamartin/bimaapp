@@ -1,5 +1,5 @@
-<%@ page import="com.bimaapp.model.Client, java.util.List, com.bimaapp.bean.policy.PolicySearchBean, 
-com.bimaapp.model.Policy, com.bimaapp.bean.client.ClientSearchBean, com.bimaapp.utils.RenderHtmlForm"%>
+<%@ page import="com.bimaapp.app.model.Client, java.util.List, com.bimaapp.app.bean.policy.PolicySearchBean, 
+com.bimaapp.app.model.Policy, com.bimaapp.app.bean.client.ClientSearchBean, com.bimaapp.utils.RenderHtmlForm"%>
 
 <!DOCTYPE html>
 <html>
@@ -34,7 +34,7 @@ com.bimaapp.model.Policy, com.bimaapp.bean.client.ClientSearchBean, com.bimaapp.
                     <option value="commercial">Commercial</option>
                 </select>
 
-                <%= RenderHtmlForm.renderForm(com.bimaapp.model.Policy.class)%>
+                <%= RenderHtmlForm.renderForm(com.bimaapp.app.model.Policy.class)%>
             </form>
             <button id="closeFormBtn">Close</button>
         </div>
