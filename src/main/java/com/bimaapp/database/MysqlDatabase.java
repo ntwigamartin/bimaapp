@@ -5,20 +5,26 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 public class MysqlDatabase implements Serializable {
-
-    private static final String URL = "jdbc:mysql://localhost:3306/bimaapp";
-
-    private static final String USER = "ntwiga";
-
-    private static final String PASSWORD = "secret@101";
 
     private static MysqlDatabase database;
 
     private Connection connection;
 
-    private MysqlDatabase() throws SQLException {
-        connection = DriverManager.getConnection(URL, USER, PASSWORD);
+    private MysqlDatabase() {
+        try {
+            Context ctx = new InitialContext();
+            DataSource dataSource = (DataSource) ctx.lookup("java:jboss/datasources/bimaapp");
+            connection = dataSource.getConnection();
+        } catch (NamingException | SQLException e) {
+            e.printStackTrace();
+        }
+       
     }
 
     public static MysqlDatabase getInstance() throws SQLException{

@@ -1,6 +1,7 @@
 package com.bimaapp.action.client;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,8 +36,12 @@ public class ClientDetailAction extends HttpServlet{
 
             paramMap.put(paramName, paramValue);
         }
-
-        newPolicyBean.createPolicy(paramMap);
+        
+        try {
+            newPolicyBean.createPolicy(paramMap);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/views/jsp/client_detail.jsp");
         dispatcher.forward(req, resp);

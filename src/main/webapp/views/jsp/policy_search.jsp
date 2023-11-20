@@ -1,5 +1,5 @@
 <%@ page import="com.bimaapp.database.Database, java.util.List, 
-com.bimaapp.model.Policy, com.bimaapp.bean.PolicySearchBean"%>
+com.bimaapp.model.Policy, com.bimaapp.bean.policy.PolicySearchBean"%>
 
 <!DOCTYPE html>
 <html>

@@ -8,17 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.bimaapp.database.Database;
 import com.bimaapp.database.MysqlDatabase;
 import com.bimaapp.model.Client;
 
 public class ClientSearchBean implements ClientSearchBeanI, Serializable{
-    List<Client> clients = Database.getDbInstance().getClients();
+    List<Client> dbClients = new ArrayList<Client>();
 
     @Override
     public Client getClient(String paramValue) {
-        
-        for (Client client : clients) {
+        dbClients = retrieveDbClients();
+        for (Client client : dbClients) {
             if (client.getNationalId().equals(paramValue)) {
                 return client;
             }
@@ -28,7 +27,7 @@ public class ClientSearchBean implements ClientSearchBeanI, Serializable{
 
     @Override
     public List<Client> searchClients(String query) {
-        List<Client> dbClients = retrieveDbClients();
+        dbClients = retrieveDbClients();
 
         return dbClients.stream()
             .filter(client -> client.getNationalId().contains(query)
@@ -41,7 +40,6 @@ public class ClientSearchBean implements ClientSearchBeanI, Serializable{
 
     public List<Client> retrieveDbClients() {
 
-        List<Client> dbClients = new ArrayList<Client>();
         String sqlQuery = "select * from clients;";
 
         try {
@@ -50,13 +48,14 @@ public class ClientSearchBean implements ClientSearchBeanI, Serializable{
 
             ResultSet results = sqlStmt.executeQuery(sqlQuery);
             while (results.next()) {
+                Long id = results.getLong("id");
                 String nationalId = results.getString("national_id");
                 String name = results.getString("client_name");
                 String telephoneNumber = results.getString("telephone_number");
                 String email = results.getString("email");
                 String address = results.getString("address");
 
-                dbClients.add(new Client(nationalId, name, telephoneNumber, email, address));
+                dbClients.add(new Client(id, nationalId, name, telephoneNumber, email, address));
             }
         } catch (SQLException e) {
             e.printStackTrace();

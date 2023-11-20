@@ -2,21 +2,32 @@ package com.bimaapp.model;
 
 import java.io.Serializable;
 
+import com.bimaapp.database.helper.DbTable;
+import com.bimaapp.database.helper.DbTableColumn;
 import com.bimaapp.enums.PolicyType;
 import com.bimaapp.utils.HtmlFormField;
 
+@DbTable(name = "policies")
 public class Policy implements Serializable{
 
+    @DbTableColumn(name = "id", definition = "INT PRIMARY KEY AUTO_INCREMENT")
     private Long id;
 
+    @DbTableColumn(name = "start_date")
     @HtmlFormField(label = "Start Date", inputType = "date")
     private String startDate;
 
-    @HtmlFormField(label = "Start Date", inputType = "date")
+    @DbTableColumn(name = "end_date")
+    @HtmlFormField(label = "End Date", inputType = "date")
     private String endDate;
     
+    @DbTableColumn(name = "policy_number")
     private String number;
+
+    @DbTableColumn(name = "policy_type")
     private PolicyType policyType;
+
+    @DbTableColumn(name = "client_id", definition = "Long")
     private Client client;
     
     public Policy(Long id, String startDate, String endDate, String number, PolicyType policyType, Client client) {

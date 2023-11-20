@@ -1,47 +1,44 @@
 package com.bimaapp.bean.policy;
 
 import java.io.Serializable;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
 import com.bimaapp.bean.client.ClientSearchBean;
 import com.bimaapp.database.Database;
+import com.bimaapp.database.MysqlDatabase;
 import com.bimaapp.enums.PolicyType;
 import com.bimaapp.model.Client;
 import com.bimaapp.model.Policy;
 
 public class NewPolicyBean implements NewPolicyBeanI, Serializable{
 
-    public void createPolicy(Map<String, ? extends Object> paramMap) {
+    public void createPolicy(Map<String, ? extends Object> paramMap) throws SQLException {
         
-        String startDate = (String) paramMap.get("startDate");
-        String endDate = (String) paramMap.get("endDate");
-        PolicyType policyType = getPolicyType((String) paramMap.get("policy_type"));
-        Client client = new ClientSearchBean().getClient((String) paramMap.get("national_id"));
+        System.out.println("******************");
+        System.out.println(new ClientSearchBean().getClient((String) paramMap.get("national_id")));
+        System.out.println("******************");
+       
+        Long clientId = new ClientSearchBean().getClient((String) paramMap.get("national_id")).getId();
 
-        String policyNumber = generatePolicyNumber();
+        String policyNumber = new GeneratePolicyNumberBean().generatePolicyNumber();
 
-        Database.getDbInstance().getPolicies().add(new Policy(startDate, endDate, policyNumber, policyType, client));
+        // Database.getDbInstance().getPolicies().add(new Policy(startDate, endDate, policyNumber, policyType, client));
+
+        PreparedStatement sqlStmt = MysqlDatabase.getInstance().getConnection()
+        .prepareStatement("insert into policies (start_date, end_date, policy_number, policy_type, client_id) values (?,?,?,?,?)");
+
+        sqlStmt.setString(1, (String) paramMap.get("startDate"));
+        sqlStmt.setString(2, (String) paramMap.get("endDate"));
+        sqlStmt.setString(3, policyNumber);
+        sqlStmt.setString(4, (String) paramMap.get("policy_type"));
+        sqlStmt.setLong(5, clientId);
+
+        sqlStmt.executeUpdate();
     }
 
-    public PolicyType getPolicyType(String paramValue) {
-        if (paramValue.equalsIgnoreCase("private")) {
-            return PolicyType.PRIVATE;
-        }else if (paramValue.equalsIgnoreCase("commercial")) {
-            return PolicyType.COMMERCIAL;
-        }else {
-            return null;
-        }
-    }
+    
 
-    public String generatePolicyNumber() {
-        List<Policy> policies = Database.getDbInstance().getPolicies();
-        String policyStr = policies.get(policies.size() - 1).getNumber();
-        int policyNum = Integer.parseInt(policyStr);
-        int newPolicyNumber = policyNum + 1;
-
-        String generatedPolicyNum = newPolicyNumber + "";
-
-        return generatedPolicyNum;
-    }
 }
