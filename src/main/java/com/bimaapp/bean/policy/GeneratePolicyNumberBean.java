@@ -3,7 +3,6 @@ package com.bimaapp.bean.policy;
 import java.io.Serializable;
 import java.util.List;
 
-import com.bimaapp.database.Database;
 import com.bimaapp.model.Policy;
 
 public class GeneratePolicyNumberBean implements GeneratePolicyNumberBeanI, Serializable{

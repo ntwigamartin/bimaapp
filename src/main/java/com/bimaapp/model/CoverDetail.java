@@ -3,27 +3,40 @@ package com.bimaapp.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import com.bimaapp.database.helper.DbTable;
+import com.bimaapp.database.helper.DbTableColumn;
 import com.bimaapp.enums.CoverType;
 import com.bimaapp.utils.HtmlFormField;
 
+@DbTable(name = "coverdetails")
 public class CoverDetail implements Serializable{
+
+    @DbTableColumn(name = "id", definition = "INT PRIMARY KEY AUTO_INCREMENT")
     private Long id;
 
+    @DbTableColumn(name = "vehicle_reg")
     @HtmlFormField(label="Vehicle Reg")
     private String vehicleReg;
 
+    @DbTableColumn(name = "vehicle_make")
     @HtmlFormField(label="Vehicle Make")
     private String vehicleMake;
 
+    @DbTableColumn(name = "vehicle_value", definition = "INT")
     @HtmlFormField(label="Vehicle Value", inputType = "number")
     private int vehicleValue;
 
+    @DbTableColumn(name = "cover_type")
     private CoverType coverType;
+
+    @DbTableColumn(name = "premium", definition = "DECIMAL(12,2)")
     private BigDecimal premium;
 
+    @DbTableColumn(name = "terms")
     @HtmlFormField(label="Terms")
     private String terms;
     
+    @DbTableColumn(name = "policy_id")
     private Policy policy;
     
     public CoverDetail(Long id, String vehicleReg, String vehicleMake, int vehicleValue, CoverType coverType,

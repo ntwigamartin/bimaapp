@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.bimaapp.bean.client.ClientSearchBean;
-import com.bimaapp.database.Database;
+import com.bimaapp.bean.coverdetail.CoverDetailSearchBean;
 import com.bimaapp.database.MysqlDatabase;
 import com.bimaapp.enums.PolicyType;
 import com.bimaapp.model.Client;
@@ -46,7 +46,7 @@ public class PolicySearchBean implements PolicySearchBeanI, Serializable{
 
     @Override
     public List<CoverDetail> getPolicyCoverDetails(String paramValue) {
-        List<CoverDetail> coverDetails = Database.getDbInstance().getCoverDetails();
+        List<CoverDetail> coverDetails = new CoverDetailSearchBean().getCoverDetailList();
         List<CoverDetail> policyCoverDetails = new ArrayList<CoverDetail>();
 
         for (CoverDetail coverDetail : coverDetails) {
@@ -75,6 +75,7 @@ public class PolicySearchBean implements PolicySearchBeanI, Serializable{
 
             ResultSet results = sqlStmt.executeQuery(sqlQuery);
             while (results.next()) {
+                long id = results.getLong("id");
                 String startDate = results.getString("start_date");
                 String endDate = results.getString("end_date");
                 String policyNum = results.getString("policy_number");
@@ -83,7 +84,7 @@ public class PolicySearchBean implements PolicySearchBeanI, Serializable{
                 String clientId = results.getString("client_id");
                 Client client = getClient(clientId);
 
-                dbPolicies.add(new Policy(startDate, endDate, policyNum, policyType, client));
+                dbPolicies.add(new Policy(id, startDate, endDate, policyNum, policyType, client));
             }
         } catch (SQLException e) {
             e.printStackTrace();

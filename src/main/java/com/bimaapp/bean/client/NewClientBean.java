@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.bimaapp.database.Database;
 import com.bimaapp.database.MysqlDatabase;
 import com.bimaapp.model.Client;
 
