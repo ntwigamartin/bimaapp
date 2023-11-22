@@ -320,3 +320,8 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
+
+# dockerwildfly
+/mysql
+standalone.xml
+/src/main/wildflydocker

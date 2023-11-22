@@ -1,5 +1,5 @@
-<%@ page import="com.bimaapp.app.bean.coverdetail.CoverDetailSearchBean, com.bimaapp.app.model.CoverDetail, 
-java.util.List, com.bimaapp.app.model.Policy, com.bimaapp.app.bean.policy.PolicySearchBean, com.bimaapp.utils.RenderHtmlForm"%>
+<%@ page import="com.bimaapp.app.bean.coverdetailbean.CoverDetailSearchBean, com.bimaapp.app.model.CoverDetail, 
+java.util.List, com.bimaapp.app.model.Policy, com.bimaapp.app.bean.policybean.PolicySearchBean, com.bimaapp.utils.RenderHtmlForm"%>
 
 <!DOCTYPE html>
 <html>

@@ -1,4 +1,4 @@
-<%@ page import="com.bimaapp.utils.RenderHtmlForm, java.util.List, com.bimaapp.app.model.Client, com.bimaapp.app.bean.client.ClientSearchBean"%>
+<%@ page import="com.bimaapp.utils.RenderHtmlForm, java.util.List, com.bimaapp.app.model.Client, com.bimaapp.app.bean.clientbean.ClientSearchBean"%>
 
 <!DOCTYPE html>
 <html>
