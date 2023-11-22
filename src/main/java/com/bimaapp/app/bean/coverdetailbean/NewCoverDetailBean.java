@@ -6,12 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Map;
 
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+
 import com.bimaapp.app.bean.helperbean.ComputePremiumBean;
 import com.bimaapp.app.bean.policybean.PolicySearchBean;
 import com.bimaapp.app.model.Policy;
 import com.bimaapp.database.MysqlDatabase;
 import com.bimaapp.enums.CoverType;
 
+@Stateless
+@Remote
 public class NewCoverDetailBean implements NewCoverDetailBeanI,  Serializable {
 
     @Override

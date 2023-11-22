@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,14 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bimaapp.app.bean.policybean.NewPolicyBean;
 import com.bimaapp.app.bean.policybean.NewPolicyBeanI;
 
 
 @WebServlet("/client")
 public class ClientDetailAction extends HttpServlet{
 
-    NewPolicyBeanI newPolicyBean = new NewPolicyBean();
+    @EJB
+    NewPolicyBeanI newPolicyBean;
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

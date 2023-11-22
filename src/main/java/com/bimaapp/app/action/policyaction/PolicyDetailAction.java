@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,11 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bimaapp.app.action.BaseAction;
-import com.bimaapp.app.bean.coverdetailbean.NewCoverDetailBean;
 import com.bimaapp.app.bean.coverdetailbean.NewCoverDetailBeanI;
 
 @WebServlet("/policy")
 public class PolicyDetailAction extends BaseAction{
+
+    @EJB
+    NewCoverDetailBeanI newPolicyDetailBean;
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -27,7 +30,6 @@ public class PolicyDetailAction extends BaseAction{
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         
-        NewCoverDetailBeanI newPolicyDetailBean = new NewCoverDetailBean();
         Map<String, String> paramMap = new HashMap<>();
 
         for (String paramName : req.getParameterMap().keySet()) {

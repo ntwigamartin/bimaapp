@@ -5,10 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Map;
 
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+
 import com.bimaapp.app.bean.clientbean.ClientSearchBean;
 import com.bimaapp.app.bean.helperbean.GeneratePolicyNumberBean;
 import com.bimaapp.database.MysqlDatabase;
 
+@Stateless
+@Remote
 public class NewPolicyBean implements NewPolicyBeanI, Serializable{
 
     public void createPolicy(Map<String, ? extends Object> paramMap) throws SQLException {

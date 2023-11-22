@@ -4,9 +4,13 @@ import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+
 import com.bimaapp.app.model.Client;
 import com.bimaapp.database.MysqlDatabase;
-
+@Stateless
+@Remote
 public class NewClientBean implements NewClientBeanI, Serializable{
     
     public void createClient(Client client) {

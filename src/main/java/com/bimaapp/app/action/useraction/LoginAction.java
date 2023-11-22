@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -21,9 +22,9 @@ import com.bimaapp.app.model.User;
 @WebServlet("/login")
 public class LoginAction extends BaseAction {
 
-    LoginBeanI loginBean = new LoginBean();
-    User user = new User();
-
+    @EJB
+    LoginBeanI loginBean;
+    
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         resp.sendRedirect("./home");
@@ -33,6 +34,7 @@ public class LoginAction extends BaseAction {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         PrintWriter writer = resp.getWriter();
+        User user = new User();
 
         serializeForm(user, req.getParameterMap());
         

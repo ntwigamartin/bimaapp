@@ -9,13 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bimaapp.app.bean.policybean.NewPolicyBean;
-import com.bimaapp.app.bean.policybean.NewPolicyBeanI;
-
 @WebServlet("/policies")
 public class PolicySearchAction extends HttpServlet{
 
-    NewPolicyBeanI newPolicyBean = new NewPolicyBean();
     
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

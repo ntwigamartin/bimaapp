@@ -5,9 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+
 import com.bimaapp.app.model.User;
 import com.bimaapp.database.MysqlDatabase;
 
+@Stateless
+@Remote
 public class LoginBean implements LoginBeanI, Serializable {
 
     public boolean authenticate(User loginUser) throws SQLException{

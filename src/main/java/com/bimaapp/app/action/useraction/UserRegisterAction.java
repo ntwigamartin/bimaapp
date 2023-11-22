@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,9 +19,9 @@ import com.bimaapp.app.model.User;
 @WebServlet("/register")
 public class UserRegisterAction extends BaseAction{
 
-    UserRegisterBeanI userRegisterBean = new UserRegisterBean();
-    User user = new User();
-    
+    @EJB
+    UserRegisterBeanI userRegisterBean;
+        
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         RequestDispatcher dispatcher = req.getRequestDispatcher("/views/jsp/user_register.jsp");
@@ -31,6 +32,7 @@ public class UserRegisterAction extends BaseAction{
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         PrintWriter writer = resp.getWriter();
+        User user = new User();
 
         serializeForm(user, req.getParameterMap());
 

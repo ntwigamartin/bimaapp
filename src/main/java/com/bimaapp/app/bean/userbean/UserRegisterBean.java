@@ -4,9 +4,14 @@ import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+
 import com.bimaapp.app.model.User;
 import com.bimaapp.database.MysqlDatabase;
 
+@Stateless
+@Remote
 public class UserRegisterBean implements UserRegisterBeanI, Serializable{
 
     public boolean createUser(User user, String confirmPasswordParam) throws SQLException {
