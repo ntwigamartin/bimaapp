@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.persistence.EnumType;
+
 import com.bimaapp.app.bean.clientbean.ClientSearchBean;
 import com.bimaapp.app.model.Client;
 import com.bimaapp.app.model.Policy;

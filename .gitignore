@@ -325,3 +325,5 @@ nb-configuration.xml
 /mysql
 standalone.xml
 /src/main/wildflydocker
+.env
+module.xml
