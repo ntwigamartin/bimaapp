@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
+
 import com.bimaapp.app.bean.policybean.PolicySearchBean;
 import com.bimaapp.app.model.CoverDetail;
 import com.bimaapp.app.model.Policy;
@@ -16,6 +18,7 @@ import com.bimaapp.enums.CoverType;
 
 public class CoverDetailSearchBean implements CoverDetailSearchBeanI, Serializable {
 
+    
     List<CoverDetail> coverDetailList = new ArrayList<>();
 
     @Override
@@ -23,7 +26,7 @@ public class CoverDetailSearchBean implements CoverDetailSearchBeanI, Serializab
         
         String query = "SELECT * FROM coverdetails;";
         try {
-            Statement statement = MysqlDatabase.getInstance().getConnection().createStatement();
+            Statement statement = MysqlDatabase.getConnection().createStatement();
             ResultSet results = statement.executeQuery(query);
 
             while (results.next()) {

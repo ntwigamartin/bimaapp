@@ -21,7 +21,7 @@ import com.bimaapp.database.helper.DbTableColumn;
 @WebListener
 public class AppServletContextListener implements ServletContextListener{
     
-    public void contextInitialized(ServletContextEvent sce) {
+    /* public void contextInitialized(ServletContextEvent sce) {
         System.out.println("*****************application initialized *******************");
         try {
             Connection connection = MysqlDatabase.getInstance().getConnection();
@@ -59,9 +59,9 @@ public class AppServletContextListener implements ServletContextListener{
             System.out.println(e.getMessage());
         }
     }
+ */
 
-
-    @Override
+    /* @Override
     public void contextDestroyed(ServletContextEvent sce) {
 
         try {
@@ -75,5 +75,5 @@ public class AppServletContextListener implements ServletContextListener{
             System.out.println(e.getMessage());
         }
 
-    }
+    } */
 }

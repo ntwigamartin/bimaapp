@@ -2,6 +2,8 @@ package com.bimaapp.app.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+
 import com.bimaapp.database.helper.DbTable;
 import com.bimaapp.database.helper.DbTableColumn;
 import com.bimaapp.utils.HtmlFormClass;

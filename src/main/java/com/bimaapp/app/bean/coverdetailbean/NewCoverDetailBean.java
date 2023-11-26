@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Map;
 
+import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
@@ -19,6 +20,7 @@ import com.bimaapp.enums.CoverType;
 @Remote
 public class NewCoverDetailBean implements NewCoverDetailBeanI,  Serializable {
 
+
     @Override
     public void createCoverDetail(Map<String, String> paramMap) throws SQLException {
         
@@ -28,7 +30,7 @@ public class NewCoverDetailBean implements NewCoverDetailBeanI,  Serializable {
         BigDecimal premium = new ComputePremiumBean().computePremium(vehicleValue, policy.getPolicyType(), coverType);
         long policyId = new PolicySearchBean().getPolicy((String) paramMap.get("policy_num")).getId();
 
-        PreparedStatement sqlStmt = MysqlDatabase.getInstance().getConnection()
+        PreparedStatement sqlStmt = MysqlDatabase.getConnection()
         .prepareStatement("insert into coverdetails(vehicle_reg, vehicle_make, vehicle_value, cover_type, premium, terms, policy_id) values(?,?,?,?,?,?,?)");
 
         sqlStmt.setString(1, (String) paramMap.get("vehicleReg"));

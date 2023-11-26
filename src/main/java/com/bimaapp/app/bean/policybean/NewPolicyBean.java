@@ -1,6 +1,5 @@
 package com.bimaapp.app.bean.policybean;
 
-import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Map;
@@ -8,13 +7,16 @@ import java.util.Map;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
+import com.bimaapp.app.bean.GenericBean;
 import com.bimaapp.app.bean.clientbean.ClientSearchBean;
 import com.bimaapp.app.bean.helperbean.GeneratePolicyNumberBean;
+import com.bimaapp.app.model.Policy;
 import com.bimaapp.database.MysqlDatabase;
 
 @Stateless
 @Remote
-public class NewPolicyBean implements NewPolicyBeanI, Serializable{
+public class NewPolicyBean extends GenericBean<Policy> implements NewPolicyBeanI{
+
 
     public void createPolicy(Map<String, ? extends Object> paramMap) throws SQLException {
         
@@ -24,7 +26,7 @@ public class NewPolicyBean implements NewPolicyBeanI, Serializable{
         String policyNumber = new GeneratePolicyNumberBean().generatePolicyNumber();
 
 
-        PreparedStatement sqlStmt = MysqlDatabase.getInstance().getConnection()
+        PreparedStatement sqlStmt = MysqlDatabase.getConnection()
         .prepareStatement("insert into policies (start_date, end_date, policy_number, policy_type, client_id) values (?,?,?,?,?)");
 
         sqlStmt.setString(1, (String) paramMap.get("startDate"));

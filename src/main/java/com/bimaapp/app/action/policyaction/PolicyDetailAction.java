@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bimaapp.app.action.BaseAction;
 import com.bimaapp.app.bean.coverdetailbean.NewCoverDetailBeanI;
+import com.bimaapp.app.model.Policy;
 
 @WebServlet("/policy")
 public class PolicyDetailAction extends BaseAction{
@@ -31,7 +32,7 @@ public class PolicyDetailAction extends BaseAction{
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         
         Map<String, String> paramMap = new HashMap<>();
-
+        
         for (String paramName : req.getParameterMap().keySet()) {
             String paramValue = req.getParameter(paramName);
 

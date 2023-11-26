@@ -30,8 +30,8 @@ com.bimaapp.app.model.Policy, com.bimaapp.app.bean.clientbean.ClientSearchBean, 
             
                 <label for="policy_type">Policy Type:</label>
                 <select id="dropdown" name="policy_type">
-                    <option value="private">Private</option>
-                    <option value="commercial">Commercial</option>
+                    <option value="PRIVATE">Private</option>
+                    <option value="COMMERCIAL">Commercial</option>
                 </select>
 
                 <%= RenderHtmlForm.renderForm(com.bimaapp.app.model.Policy.class)%>

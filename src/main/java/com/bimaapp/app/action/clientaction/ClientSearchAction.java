@@ -31,7 +31,7 @@ public class ClientSearchAction extends BaseAction {
         Client client = new Client();
         
         serializeForm(client, req.getParameterMap());
-        newClientBean.createClient(client);
+        newClientBean.addOrUpdate(client);
         
         RequestDispatcher dispatcher = req.getRequestDispatcher("/views/jsp/client_search.jsp");
         dispatcher.forward(req, resp);

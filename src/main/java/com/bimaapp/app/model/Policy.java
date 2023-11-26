@@ -29,6 +29,8 @@ public class Policy implements Serializable{
 
     @DbTableColumn(name = "client_id", definition = "Long")
     private Client client;
+
+    public Policy() {}
     
     public Policy(Long id, String startDate, String endDate, String number, PolicyType policyType, Client client) {
         this.id = id;

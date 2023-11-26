@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.ejb.EJB;
 import javax.persistence.EnumType;
 
 import com.bimaapp.app.bean.clientbean.ClientSearchBean;
@@ -66,7 +67,7 @@ public class PolicySearchBean implements PolicySearchBeanI, Serializable{
         String sqlQuery = "select * from policies;";
 
         try {
-            Statement sqlStmt = MysqlDatabase.getInstance().getConnection()
+            Statement sqlStmt = MysqlDatabase.getConnection()
             .createStatement();
 
             ResultSet results = sqlStmt.executeQuery(sqlQuery);

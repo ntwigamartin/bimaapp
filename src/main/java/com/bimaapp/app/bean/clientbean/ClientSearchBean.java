@@ -8,10 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.ejb.EJB;
+
 import com.bimaapp.app.model.Client;
 import com.bimaapp.database.MysqlDatabase;
 
 public class ClientSearchBean implements ClientSearchBeanI, Serializable{
+
     List<Client> dbClients = new ArrayList<Client>();
 
     @Override
@@ -45,8 +48,7 @@ public class ClientSearchBean implements ClientSearchBeanI, Serializable{
         String sqlQuery = "select * from clients;";
 
         try {
-            Statement sqlStmt = MysqlDatabase.getInstance().getConnection()
-            .createStatement();
+            Statement sqlStmt = MysqlDatabase.getConnection().createStatement();
 
             ResultSet results = sqlStmt.executeQuery(sqlQuery);
             while (results.next()) {
