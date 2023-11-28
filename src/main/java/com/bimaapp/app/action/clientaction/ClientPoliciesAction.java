@@ -9,7 +9,6 @@ import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,14 +22,14 @@ import com.bimaapp.enums.PolicyType;
 
 
 @WebServlet("/client")
-public class ClientDetailAction extends BaseAction{
+public class ClientPoliciesAction extends BaseAction{
 
     @EJB
     NewPolicyBeanI newPolicyBean;
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/views/jsp/client_detail.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/views/jsp/client_policies.jsp");
         dispatcher.forward(req, resp);
 
     }
@@ -63,7 +62,7 @@ public class ClientDetailAction extends BaseAction{
             e.printStackTrace();
         }
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/views/jsp/client_detail.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/views/jsp/client_policies.jsp");
         dispatcher.forward(req, resp);
     }
 }

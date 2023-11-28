@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import com.bimaapp.app.bean.GenericBean;
 import com.bimaapp.app.bean.clientbean.ClientSearchBean;
@@ -17,13 +18,15 @@ import com.bimaapp.database.MysqlDatabase;
 @Remote
 public class NewPolicyBean extends GenericBean<Policy> implements NewPolicyBeanI{
 
+    @Inject
+    private GeneratePolicyNumberBean generator;
 
     public void createPolicy(Map<String, ? extends Object> paramMap) throws SQLException {
         
                
         Long clientId = new ClientSearchBean().getClient((String) paramMap.get("national_id")).getId();
 
-        String policyNumber = new GeneratePolicyNumberBean().generatePolicyNumber();
+        String policyNumber = generator.generatePolicyNumber();
 
 
         PreparedStatement sqlStmt = MysqlDatabase.getConnection()

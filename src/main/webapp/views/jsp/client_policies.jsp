@@ -13,7 +13,7 @@ com.bimaapp.app.model.Policy, com.bimaapp.app.bean.clientbean.ClientSearchBean, 
 <jsp:include page="menu_bar.jsp"/>
 
 <div class="main">
-    <h1> Client Details</h1>
+    <h1> Client Policies</h1>
     <div class="detail">
         <% Client client = new ClientSearchBean().getClient(request.getParameter("national_id"));%>
         <h3>NAME:<span> <%=client.getName()%> </span></h3> 
